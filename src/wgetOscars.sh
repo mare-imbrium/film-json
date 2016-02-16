@@ -2,13 +2,13 @@
 # ----------------------------------------------------------------------------- #
 #         File: wgetOscars.sh
 #  Description: wget's the oscar files from imdb and puts them in the oscars dir.
-#       Author: j kepler  http://github.com/mare-imbrium/canis/
+#       Author: j kepler  http://github.com/mare-imbrium/
 #         Date: 2015-11-08 - 18:47
 #      License: MIT
-#  Last update: 2015-11-09 11:41
+#  Last update: 2016-02-16 13:08
 # ----------------------------------------------------------------------------- #
 #  YFF Copyright (C) 2012-2014 j kepler
-#  Last update: 2015-11-09 11:41
+#  Last update: 2016-02-16 13:08
 
 # print a message to stderr, preceded by the script name
 function warn {
