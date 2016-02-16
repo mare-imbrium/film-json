@@ -10,8 +10,7 @@ This is then inserted into an sqlite database and then queries using some simple
 Add descriptions of other programs.
  
 
- INSERTING NEW MOVIES INTO IMDB
- ------------------------------
+## Inserting New Movies Into database
 
  1. rename files.list or backup
  2. put IMDB ID's in files.list
@@ -22,12 +21,11 @@ Add descriptions of other programs.
 
 ### Finding IMDBID:
 
-Use `titlesearch.sh --search "partial or full name"`,
+1. Use `titlesearch.sh --search "partial or full name"`,
 This returns 1 or more matches with year. 
-Place the required tt code in files.list and run `./retrieveJson.rb` and then `convert.rb`
+2. Place the required tt code in files.list and run `./retrieveJson.rb` and then `convert.rb`
 
-Getting imdb id's from wikipedia pages.
---------------------------------------
+## Getting imdb id's from wikipedia pages.
 
     grep -o -h 'www.imdb.com/title/tt[0-9]*' *.html | cut -f3 -d'/' > files.list
 
@@ -43,3 +41,22 @@ Sometimes the name of the file does not match the imdbID since the page was forw
      grep -o 'imdbID":"tt[0-9]*"' tt*.json | tr -d '"' | sed 's/\./:/' > temp.t
      awk -F: '{ if ($1 != $4) { print  $1; }}' temp.t
 
+## Program Summary
+
+`check_imdb.sh` - Checks database for given title (and year). Returns 0 or 1 (found/not found)
+
+`convert.rb` - imports into sqlite
+
+`cu.sh` - calls check_imdb.sh and if not found then titlesearch.sh
+
+`get_title_for_imdbid.sh` - given ttcode print title
+
+`getimdbid.sh` - print imdbid for a given title.
+
+`imdb.sh` - lists movies matching given criteria such as director or actor or title
+
+`retrieveJson.rb` - fetches movie data from OMDB for files in files.list
+
+`titlesearch.sh` - searches for title using OMDB if not in local database
+
+`updatedb.rb` - updates table from given json files (if json has changed)
